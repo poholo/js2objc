@@ -1,0 +1,54 @@
+<html xmlns=http://www.w3.org/1999/xhtml xml:lang=zh-CN dir=ltr>
+    <head>
+        <meta http-equiv=Content-Type content=text/html; charset=UTF-8 />
+        <script type=text/javascript>
+            //window.youkujsbrige.showlogview();
+            function onSuccess(e) { }
+            function onError(e) { }
+
+            var callback = {
+                onSuccess: function () { },
+                onError: function () { },
+            };
+            function onSuccess() {
+                alert("onSuccess");
+            }
+        
+        
+            function login() {YoukuJSBridge.showLoginView();}
+            function share() {YoukuJSBridge.showShareView();}
+            function pay() {YoukuJSBridge.showPayView();}
+            function getCurrentUser() {YoukuJSBridge.doCheckLogin();}
+
+            function play() {YoukuJSBridge.doPlay();} 
+            function pause() {YoukuJSBridge.doPause();} 
+            function getPlayerState() {YoukuJSBridge.getPlayerState();} 
+            function currentTimePoint() {YoukuJSBridge.currentTimePoint();} 
+            function seek() {YoukuJSBridge.doSeek();} 
+            function openVideo(vid) {alert('before open');YoukuJSBridge.doOpen(vid); alert('after open');} 
+
+            function testDispatchEvent(name, detail) {
+                var ce = new CustomEvent(name, detail);
+                document.dispatchEvent(ce);
+            }
+        
+            document.addEventListener("eventTest", function (e) { alert(e.detail.vid); }, false);
+            document.addEventListener("eventTest1", function (e) { alert(e.detail.vid); }, false);
+            testDispatchEvent("eventTest", {'detail':{'vid':'123456'}});
+        </script>
+    </head>
+    <body>
+        <input type=button value=login onClick=login() />
+        <input type=button value=share onClick=share() />
+        <input type=button value=pay onClick=pay() />
+        <input type=button value=getCurrentUser onClick=getCurrentUser() />
+
+        <input type=button value=play onClick=play() /> 
+        <input type=button value=pause onClick=pause() /> 
+        <input type=button value=getPlayerState onClick=getPlayerState() /> 
+        <input type=button value=currentTimePoint onClick=currentTimePoint() /> 
+        <input type=button value=seek onClick=seek() /> 
+        <input type=button value=openVideo onClick=openVideo('XNzk5OTUxNTY4') /> 
+        
+    </body>
+</html>
